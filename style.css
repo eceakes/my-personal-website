@@ -1,6 +1,26 @@
-body {
-    background: skyblue;
-}
 nav {
     display: block;
+    font-family: Courier;
+    font-weight: 800;
+    text-align: center;
+}
+#left-gutter {
+    float:left;
+    width: 10%;
+    z-index: 1;
+    background-color: #fdf9ef; 
+}
+#right-gutter {
+    float:right;
+    width:10%;
+    z-index: 1;
+    background-color:#fdf9ef;
+}
+#main-content {
+    display:block;
+    float:left;
+    padding-left: 10%;
+    z-index: 999;
+    background-color: #a6d7ff;
+    text-align: center;
 }
