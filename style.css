@@ -3,20 +3,26 @@ nav {
     font-family: Courier;
     font-weight: 800;
     text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
-#left-gutter {
+div #left-gutter {
     float:left;
     width: 10%;
     z-index: 1;
     background-color: #fdf9ef; 
 }
-#right-gutter {
+div #right-gutter {
     float:right;
     width:10%;
     z-index: 1;
     background-color:#fdf9ef;
 }
-#main-content {
+div #main-content {
     display:block;
     float:left;
     padding-left: 10%;
