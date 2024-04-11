@@ -8,37 +8,63 @@
     <div id="background">
       <img src="./Images/cropped-Landing.png" alt="Background Image">
     </div>
-    <div id="navigation" class="navigation">
-        <nav>
-          <a href="#scroll1">Scroll 1</a>
+    <nav id="navigation" class="navigation">
+          <a href="./sine/sine.html">Tone Generator</a>
           <a href="#scroll2">Scroll 2</a>
           <a href="#scroll3">Scroll 3</a>
-        </nav>
-    </div>
+    </nav>
     <!-- Flex Container -->
     <div class="flex-container">
         <div id="left-gutter"></div>
-        <div id="main-content">
+        <main id="main-content">
             <h1>Welcome!</h1>
             <div id="main-left">
                 <p>this is a test.</p>
             </div>
-            <div id="scroll1">
+            <section id="scroll1">
                 <p>This content is first.</p>
-            </div>
-            <div id="scroll2">
+            </section>
+            <section id="scroll2">
                 <p>This content is second.</p>
-            </div>
-            <div id="scroll3">
+            </section>
+            <section id="scroll3">
                 <p>This content is third.</p>
+            </section>
+            <button id="instrument-picker-initialize">Click Here</button>
+            <div id="list-of-instruments" class="hidden">
+              <label for="instruments" id="instrument-label">Choose an Instrument:</label>
+              <select id="select-instrument">
+                <option value="Violin">Violin</option>
+                <option value="Viola">Viola</option>
+                <option value="Cello">Cello</option>
+                <option value="Bass">Bass</option>
+                <option value="Flute">Flute</option>
+                <option value="Oboe">Oboe</option>
+                <option value="English-Horn">English Horn</option>
+                <option value="Clarinet">Clarinet</option>
+                <option value="Bassoon">Bassoon</option>
+                <option value="Horn">Horn</option>
+                <option value="Trumpet">Trumpet</option>
+                <option value="Trombone">Trombone</option>
+                <option value="Tuba">Tuba</option>
+                <option value="Percussion">Percussion</option>
+                <option value="Piano">Piano</option>
+                <option value="Harp">Harp</option>
+                <option value="Drum-Set">Drum Set</option>
+                <option value="Classical Guitar">Classical Guitar</option>
+                <option value="Jazz-Guitar">Jazz Guitar</option>
+                <option value="Vocals">Vocals</option>
+                <option value="Conductor">Conductor</option>
+              </select>
             </div>
+            <div id="select-instrument-message"></div>
         </div>
         <div id="right-gutter"></div>
-    </div>
+    </main>
     <!-- Footer -->
-    <div id="footer">
+    <footer id="footer">
         <p>This is the footer.</p>
-    </div>
+    </footer>
     <script src="./javascript/script.js"></script>
 </body>
 </html>

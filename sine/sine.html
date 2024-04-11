@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sine Wave Player</title>
+<link rel="stylesheet" type="text/css" href="sine.css">
+</head>
+<body>
+    <nav>
+        <a href="../index.html">Home</a>
+    </nav>
+<table class="enterNotes">
+    <thead id="tableheader">
+        <th>Enter Notes Below</th>
+
+        </thead>
+    <tbody>
+   <tr>
+    <td class="label">Note 1: </td>
+    <td><input type="text" id="noteInput1" placeholder="Enter Note (e.g., C3)"></td>
+    <td><input type="range" id="volume1" min="0" max="1" step="0.01" value="0.5"></td>
+    </tr>
+   <tr>
+    <td class="label">Note 2: </td>
+    <td><input type="text" id="noteInput2" placeholder="Enter Note"></td>
+    <td><input type="range" id="volume2" min="0" max="1" step="0.01" value="0.5"></td>
+    </tr>
+   <tr>
+    <td class="label">Note 3: </td>
+    <td><input type="text" id="noteInput3" placeholder="Enter Note"></td>
+    <td><input type="range" id="volume3" min="0" max="1" step="0.01" value="0.5"></td>
+</tr>
+   <tr>
+    <td class="label">Note 4: </td>
+    <td><input type="text" id="noteInput4" placeholder="Enter Note"></td>
+    <td><input type="range" id="volume4" min="0" max="1" step="0.01" value="0.5"></td>
+</tr>
+</tbody>
+</table>
+    <div class="intonationSelect">
+    <label for="intonationSystem"><strong>Select Intonation System</strong></label>
+<select id="intonationSystem">
+    <option value="equal">Equal Temperament</option>
+    <option value="just">Adaptive Just Intonation</option>
+</select>
+</div>
+<div class="controls">
+    <button id="playAllButton">Play Notes</button>
+    <button id="stopButton">Stop Playing</button>
+    <button id="clearNotes">Clear Notes</button>
+    </div>
+    <script src="sineWavePlayer.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+body {
+    display:grid;
+    font-family: 'Times New Roman', Times, serif;
+}
+.enterNotes {
+    display: grid;
+    position:relative;
+    text-align: center;
+    margin: 20px auto;
+}
+.intonationSelect {
+    display: grid;
+    position:relative;
+    text-align: center;
+    margin: 20px auto;
+}
+.controls {
+    display: inline-block;
+    position:relative;
+    text-align: center;
+    margin: 20px auto;
+}
+.label {
+    font-weight: bold;
+}
+#tableheader {
+    display: block;
+    position:relative;
+    text-align: center;
+    margin: 20px auto;
+}
+strong {
+    font-weight: bold;
+}
+
+#waveformCanvas {
+    display:block;
+}
