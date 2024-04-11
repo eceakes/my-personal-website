@@ -112,7 +112,7 @@ function startPlayingNotes() {
             });
         }
     }
-
+}
     function clearInputs() {
         document.getElementById('noteInput1').value = '';
         document.getElementById('noteInput2').value = '';
