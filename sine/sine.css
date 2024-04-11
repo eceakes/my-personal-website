@@ -62,3 +62,11 @@ button {
 button:hover {
     background-color: cyan;
 }
+footer {
+    display: block;
+    position:absolute;
+    top: 0px;
+    text-align: center;
+    margin: 0px auto;
+    width: 100%;
+}
