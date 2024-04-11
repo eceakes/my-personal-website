@@ -16,6 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function initializeAudioContext() {
         if (!audioContext) {
             audioContext = new AudioContext();
+            if (audioContext.state === 'suspended') {
+                audioContext.resume().then(() => {
+                    console.log('AudioContext successfully resumed');
+                }).catch((error) => {
+                    console.error('Error resuming AudioContext:', error);
+                });
+            }
         }
     }
 
@@ -30,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function noteToFrequency(note) {
-        const A0 = 27.5; // Frequency of A0
+        const A0 = 27.5;
         const number = noteToNumber(note);
         return A0 * Math.pow(2, number / 12);
     }
@@ -40,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetNumber = noteToNumber(note);
         const interval = targetNumber - baseNumber;
         const baseFrequency = noteToFrequency(baseNote);
-    
         const ratios = {
             0: 1, 1: 16/15, 2: 9/8, 3: 6/5, 4: 5/4, 5: 4/3, 6: 45/32, 7: 3/2, 8: 8/5, 9: 5/3, 10: 9/5, 11: 15/8, 12: 2
         };
@@ -48,21 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let justRatio = ratios[Math.abs(interval % 12)];
         return baseFrequency * justRatio * Math.pow(2, octaveOffset);
     }
-function playNotes() {
-    initializeAudioContext();
-    if (audioContext.state === 'suspended') {
-        audioContext.resume().then(() => {
-            console.log('AudioContext resumed successfully');
-            startPlayingNotes();
-        }).catch((error) => {
-            console.error('Error resuming AudioContext:', error);
-        });
-    } else {
-        startPlayingNotes();
-    }
-}
 
-function startPlayingNotes() {
     function playNotes() {
         initializeAudioContext();
         const notes = [
@@ -71,28 +63,28 @@ function startPlayingNotes() {
             { input: document.getElementById('noteInput3'), volume: document.getElementById('volume3') },
             { input: document.getElementById('noteInput4'), volume: document.getElementById('volume4') }
         ].filter(n => n.input.value); // Filter out empty inputs
-    
+
         if (notes.length === 0) {
             console.error("No notes entered");
             return;
         }
-    
+
         const intonationSystem = document.getElementById('intonationSystem').value;
         const sortedNotes = notes.sort((a, b) => noteToNumber(a.input.value) - noteToNumber(b.input.value));
         const baseNote = sortedNotes[0].input.value;
-    
+
         const frequencies = sortedNotes.map(note => {
             return {
                 frequency: intonationSystem === 'just' ? calculateJustIntonationFrequency(baseNote, note.input.value) : noteToFrequency(note.input.value),
                 volume: parseFloat(note.volume.value)
             };
         });
-    
+
         frequencies.forEach(({ frequency, volume }) => {
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
             gainNode.gain.value = volume;
-    
+
             oscillator.type = 'sine';
             oscillator.frequency.value = frequency;
             oscillator.connect(gainNode);
@@ -100,7 +92,7 @@ function startPlayingNotes() {
             oscillator.start();
             setTimeout(() => oscillator.stop(), 30000); // Play for 30 seconds
         });
-    
+
         console.log("Playing notes:", frequencies.map(f => `${f.frequency.toFixed(2)} Hz at volume ${f.volume}`));
     }
 
@@ -112,7 +104,7 @@ function startPlayingNotes() {
             });
         }
     }
-}
+
     function clearInputs() {
         document.getElementById('noteInput1').value = '';
         document.getElementById('noteInput2').value = '';
