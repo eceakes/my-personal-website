@@ -63,7 +63,7 @@ button:hover {
     background-color: cyan;
 }
 footer {
-    display: inline-block;
+    display:inline-block;
     position:absolute;
     bottom: 0px;
     text-align: center;
