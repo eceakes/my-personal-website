@@ -63,9 +63,10 @@ button:hover {
     background-color: cyan;
 }
 footer {
-    display: block;
+    display: inline-block;
     position:absolute;
     bottom: 0px;
+    top: 90%;
     text-align: center;
     margin: 0px auto;
     width: 100%;
