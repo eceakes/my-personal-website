@@ -48,19 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
         let justRatio = ratios[Math.abs(interval % 12)];
         return baseFrequency * justRatio * Math.pow(2, octaveOffset);
     }
-    function playNotes() {
-        initializeAudioContext();
-        if (audioContext.state === 'suspended') {
-            audioContext.resume().then(() => {
-                console.log('AudioContext resumed successfully');
-                startPlayingNotes();
-            }).catch((error) => {
-                console.error('Error resuming AudioContext:', error);
-            });
-        } else {
+function playNotes() {
+    initializeAudioContext();
+    if (audioContext.state === 'suspended') {
+        audioContext.resume().then(() => {
+            console.log('AudioContext resumed successfully');
             startPlayingNotes();
-        }
+        }).catch((error) => {
+            console.error('Error resuming AudioContext:', error);
+        });
+    } else {
+        startPlayingNotes();
     }
+}
 
 function startPlayingNotes() {
     function playNotes() {
