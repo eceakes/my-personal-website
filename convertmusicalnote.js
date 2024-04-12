@@ -18,13 +18,13 @@ function frequencyToNote() {
     }
 
     const A4 = 440.0;
-    const A4_INDEX = 57;
+    const A4_INDEX = 49; // Corrected index for A4 if starting from C0
     const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
     let numHalfSteps = 12 * Math.log2(input / A4);
     let noteIndex = Math.round(numHalfSteps) + A4_INDEX;
     let centsDifference = Math.round((numHalfSteps - Math.round(numHalfSteps)) * 100);
-    let octave = Math.floor(noteIndex / 12) - 1;
+    let octave = Math.floor(noteIndex / 12); // Corrected octave calculation
     let note = notes[noteIndex % 12];
     let result = note + octave;
 

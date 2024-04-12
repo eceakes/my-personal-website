@@ -13,7 +13,6 @@ input, select, button {
     padding: 0.5rem;
     margin: 10px auto; /* Consistent margin for all form elements */
     display: block; /* Ensures that elements do not align inline */
-    width: 50%; /* Uniform width for better control */
     box-sizing: border-box; /* Includes padding and border in the element's width */
 }
 
