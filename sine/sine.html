@@ -46,13 +46,31 @@
 </select>
 </div>
 <div class="controls">
-    <button id="playAllButton">Play Notes</button>
+    <button id="playAllButton" class="show">Play Notes</button>
     <button id="stopButton">Stop Playing</button>
     <button id="clearNotes">Clear Notes</button>
     </div>
-    <script src="https://eceakes.github.io/my-personal-website/sine/sineWavePlayer.js"></script>
+    
+    <section>
+        <div id="what-isplaying">
+        </div>
+        <div id="hertz-to-note" class="show">
+            <p>Use this field to convert a frequency value to a musical note</p>
+        </div>
+        
+        <div class="controls">
+            <input class="show" type="text" id="userhertz" placeholder="Enter Frequency">
+        <button id="submithertz">Submit</button>
+            <button id="play-entered">Play Note</button>
+            <button id="addnew">Reset Conversion</button>
+        <canvas id="sineCanvas" width="400" height="100" style="border:1px solid #000000;"></canvas>
+        </div>
+    </section>
     <footer>
         <p>&#169;2024 Eric Eakes</p>
     </footer>
+    <script src="../convertmusicalnote.js"></script>
+    <script src="../sine/sineWavePlayercopy.js"></script>
+    <script src="../hide.js"></script>
 </body>
 </html>

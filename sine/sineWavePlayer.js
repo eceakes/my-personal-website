@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'C': 0, 'C#': 1, 'Db': 1, 'D': 2, 'D#': 3, 'Eb': 3, 'E': 4, 'Fb': 4, 'E#': 5, 'F': 5, 'F#': 6, 'Gb': 6,
             'G': 7, 'G#': 8, 'Ab': 8, 'A': 9, 'A#': 10, 'Bb': 10, 'B': 11, 'Cb': 11, 'B#': 0
         };
+        note = note.toUpperCase();
         const noteBase = note.slice(0, -1);
         const octave = parseInt(note.slice(-1), 10);
         return notes[noteBase] + (octave * 12);
@@ -56,44 +57,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function playNotes() {
-        initializeAudioContext();
-        const notes = [
-            { input: document.getElementById('noteInput1'), volume: document.getElementById('volume1') },
-            { input: document.getElementById('noteInput2'), volume: document.getElementById('volume2') },
-            { input: document.getElementById('noteInput3'), volume: document.getElementById('volume3') },
-            { input: document.getElementById('noteInput4'), volume: document.getElementById('volume4') }
-        ].filter(n => n.input.value); // Filter out empty inputs
-
-        if (notes.length === 0) {
-            console.error("No notes entered");
-            return;
+        try {
+            initializeAudioContext();
+            const notes = [
+                { input: document.getElementById('noteInput1'), volume: document.getElementById('volume1') },
+                { input: document.getElementById('noteInput2'), volume: document.getElementById('volume2') },
+                { input: document.getElementById('noteInput3'), volume: document.getElementById('volume3') },
+                { input: document.getElementById('noteInput4'), volume: document.getElementById('volume4') }
+            ].filter(n => n.input.value); // Filter out empty inputs
+    
+            if (notes.length === 0) {
+                console.error("No notes entered");
+                return;
+            }
+    
+            const intonationSystem = document.getElementById('intonationSystem').value;
+            const sortedNotes = notes.sort((a, b) => noteToNumber(a.input.value) - noteToNumber(b.input.value));
+            const baseNote = sortedNotes[0].input.value;
+    
+            frequencies = sortedNotes.map(note => {
+                return {
+                    frequency: intonationSystem === 'just' ? calculateJustIntonationFrequency(baseNote, note.input.value) : noteToFrequency(note.input.value),
+                    volume: parseFloat(note.volume.value)
+                };
+            });
+    
+            frequencies.forEach(({ frequency, volume }) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                gainNode.gain.value = volume;
+    
+                oscillator.type = 'sine';
+                oscillator.frequency.value = frequency;
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.start();
+                setTimeout(() => oscillator.stop(), 30000); // Play for 30 seconds
+            });
+            
+        } catch (error) {
+            console.error("Error: " + error.message);
+            alert("Error: " + error.message); // Optionally alert the user
         }
-
-        const intonationSystem = document.getElementById('intonationSystem').value;
-        const sortedNotes = notes.sort((a, b) => noteToNumber(a.input.value) - noteToNumber(b.input.value));
-        const baseNote = sortedNotes[0].input.value;
-
-        const frequencies = sortedNotes.map(note => {
-            return {
-                frequency: intonationSystem === 'just' ? calculateJustIntonationFrequency(baseNote, note.input.value) : noteToFrequency(note.input.value),
-                volume: parseFloat(note.volume.value)
-            };
-        });
-
-        frequencies.forEach(({ frequency, volume }) => {
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            gainNode.gain.value = volume;
-
-            oscillator.type = 'sine';
-            oscillator.frequency.value = frequency;
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            oscillator.start();
-            setTimeout(() => oscillator.stop(), 30000); // Play for 30 seconds
-        });
-
-        console.log("Playing notes:", frequencies.map(f => `${f.frequency.toFixed(2)} Hz at volume ${f.volume}`));
     }
 
     function stopAllAudio() {
@@ -116,3 +121,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('volume4').value = 0.5;
     }
 });
+
+document.getElementById('playAllButton').addEventListener('click', function() {
+   const dropdownMenu = document.getElementById('what-isplaying');
+    
+  //  if (dropdownMenu.classList.contains('hidden')) {
+  //      dropdownMenu.classList.remove('hidden');
+  //  } else {
+  //      dropdownMenu.classList.add('hidden');
+  //      return;
+  //  }
+//});
