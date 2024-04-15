@@ -1,92 +1,100 @@
 body {
-    display: grid;
-    grid-template-columns: 1fr;
-    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;  /* More modern than Times New Roman */
     margin: 0;
-    padding: 0;
-    font-size: 16px; /* Good base size for mobile */
-    align-items: center; /* Center content vertically */
-    width: 100vw;  /* Ensure the body takes full width */
-    min-height: 100vh;  /* Ensure the body takes at least full height of the viewport */
-    overflow-x: hidden; /* Prevent horizontal overflow */
+    padding: 20px;
+    height: 100vh;
+    background-color: #f4f4f9;  /* Light grey background for a modern look */
+    color: #333;  /* Dark grey text for better readability */
+    font-size: 16px;  /* Optimal for various devices */
 }
 
-input, select {
+input[type="text"], select {
+    width: 90%;  /* Responsive width */
+    max-width: 500px;  /* Maximum width to maintain usability */
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background-color: white;
+}
+
+input[type="range"] {
+    width: 90%;
+    max-width: 500px;
+    margin: 15px 0;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;  /* Bright blue for a modern look */
+    color: white;
     font-size: 1rem;
-    padding: 0.5rem;
-    margin: 10px auto; /* Consistent margin for all form elements */
-    display: block; /* Ensures that elements do not align inline */
-    width: 100%; /* Optimal width on smaller screens */
-    box-sizing: border-box; /* Includes padding and border in the element's width */
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+button:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+}
+
+/* Structural Styles */
 .enterNotes, .intonationSelect, .controls {
-    display: grid;
-    position: relative;
-    text-align: center;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .label, strong {
     font-weight: bold;
+    margin-bottom: 5px;  /* Space above labels */
 }
 
-.controls, footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center buttons vertically */
-    justify-content: center; /* Center buttons horizontally */
-    margin: 20px 0;
+#waveformCanvas {
+    width: 90%;
+    max-width: 600px;
+    height: 100px;
+    margin-top: 20px;
+    border: 1px solid #ccc;  /* Subtle border for the canvas */
 }
 
-#waveformCanvas, nav, footer {
+/* Navigation and Footer */
+nav, footer {
     width: 100%;
     text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    background-color: #eaeaea;  /* Subtle background for nav/footer */
 }
 
-nav, footer {
-    position: relative; /* Adjusted for footer to stay at bottom */
-}
-
-button {
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    border-radius: 10px;
-    border: 2px solid black; /* Slightly thinner border for a cleaner look */
-    color: black;
-    cursor: pointer; /* Make it clear the button is clickable */
-    width: 50%;
-    display: inline;
-}
-
-button:hover {
-    background-color: cyan;
+nav {
+    top: 0;
 }
 
 footer {
-    padding: 10px 0;
+    bottom: 0;
 }
 
-@media (min-width: 768px) { /* Tablets and up */
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
     body {
-        font-size: 18px; /* Slightly larger font size for readability */
+        font-size: 18px;
     }
 
-    input, select {
-        width: 100%; /* Wider screens can handle a narrower width for form elements */
-    }
-
-    .controls, .enterNotes {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for better layout */
+    input[type="text"], select, button {
+        width: 70%;
     }
 }
 
-@media (min-width: 1024px) { /* Desktops */
-    input, select {
-        width: 100%; /* Ideal width for desktop to avoid too wide elements */
-    }
-
-    .controls, .enterNotes {
-        grid-template-columns: repeat(3, 1fr); /* Three columns layout for desktop */
+@media (min-width: 1024px) {
+    input[type="text"], select, button {
+        width: 50%;
     }
 }
