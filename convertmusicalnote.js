@@ -17,22 +17,19 @@ function frequencyToNote() {
         return "Enter a frequency in the range 27.5Hz (A0) and 14080Hz (A9)";
     }
 
-    const A4 = 440.0;
-    const A4_INDEX = 49; // Corrected index for A4 if starting from C0
-    const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+const A4_INDEX = 48; // A4 is the 49th note in zero-based index, starting from C0
+let numHalfSteps = 12 * Math.log2(input / A4);
+let noteIndex = Math.round(numHalfSteps) + A4_INDEX;
+let centsDifference = Math.round((numHalfSteps - Math.round(numHalfSteps)) * 100);
+let octave = Math.floor(noteIndex / 12);
+let note = notes[noteIndex % 12];
+let result = note + octave;
 
-    let numHalfSteps = 12 * Math.log2(input / A4);
-    let noteIndex = Math.round(numHalfSteps) + A4_INDEX;
-    let centsDifference = Math.round((numHalfSteps - Math.round(numHalfSteps)) * 100);
-    let octave = Math.floor(noteIndex / 12); // Corrected octave calculation
-    let note = notes[noteIndex % 12];
-    let result = note + octave;
-
-    if (centsDifference > 0) {
-        result += " plus " + centsDifference + " cents";
-    } else if (centsDifference < 0) {
-        result += " minus " + Math.abs(centsDifference) + " cents";
-    }
+if (centsDifference > 0) {
+    result += " plus " + centsDifference + " cents";
+} else if (centsDifference < 0) {
+    result += " minus " + Math.abs(centsDifference) + " cents";
+}
 
     return result;
 }
