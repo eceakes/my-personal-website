@@ -125,10 +125,10 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('playAllButton').addEventListener('click', function() {
    const dropdownMenu = document.getElementById('what-isplaying');
     
-  //  if (dropdownMenu.classList.contains('hidden')) {
-  //      dropdownMenu.classList.remove('hidden');
-  //  } else {
-  //      dropdownMenu.classList.add('hidden');
-  //      return;
-  //  }
-//});
+ if (dropdownMenu.classList.contains('hidden')) {
+       dropdownMenu.classList.remove('hidden');
+   } else {
+        dropdownMenu.classList.add('hidden');
+        return;
+  }
+});
