@@ -16,7 +16,7 @@ input, select {
     padding: 0.5rem;
     margin: 10px auto; /* Consistent margin for all form elements */
     display: block; /* Ensures that elements do not align inline */
-    width:100%; /* Optimal width on smaller screens */
+    width: 100%; /* Optimal width on smaller screens */
     box-sizing: border-box; /* Includes padding and border in the element's width */
 }
 
