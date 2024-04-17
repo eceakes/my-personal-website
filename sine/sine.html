@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Sine Wave Player</title>
-<link rel="stylesheet" type="text/css" href="https://eceakes.github.io/my-personal-website/css/sine.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sine Wave Player</title>
+    <link rel="stylesheet" type="text/css" href="../css/sine.css">
 </head>
 <body>
+    <header>
     <nav>
         <a href="../index.html">Home</a>
     </nav>
-<table class="enterNotes">
-    <thead id="tableheader">
-        <th>Enter Notes Below</th>
-
-        </thead>
-    <tbody>
-   <tr>
-    <td class="label">Note 1: </td>
-    <td><input type="text" id="noteInput1" placeholder="Enter Note (e.g., C3)"></td>
-    <td><input type="range" id="volume1" min="0" max="1" step="0.01" value="0.5"></td>
-    </tr>
-   <tr>
-    <td class="label">Note 2: </td>
-    <td><input type="text" id="noteInput2" placeholder="Enter Note"></td>
-    <td><input type="range" id="volume2" min="0" max="1" step="0.01" value="0.5"></td>
-    </tr>
-   <tr>
-    <td class="label">Note 3: </td>
-    <td><input type="text" id="noteInput3" placeholder="Enter Note"></td>
-    <td><input type="range" id="volume3" min="0" max="1" step="0.01" value="0.5"></td>
-</tr>
-   <tr>
-    <td class="label">Note 4: </td>
-    <td><input type="text" id="noteInput4" placeholder="Enter Note"></td>
-    <td><input type="range" id="volume4" min="0" max="1" step="0.01" value="0.5"></td>
-</tr>
-</tbody>
-</table>
-    <div class="intonationSelect">
-    <label for="intonationSystem"><strong>Select Intonation System</strong></label>
-<select id="intonationSystem">
-    <option value="equal">Equal Temperament</option>
-    <option value="just">Adaptive Just Intonation</option>
-</select>
-</div>
-<div class="controls">
-    <button id="playAllButton" class="show">Play Notes</button>
-    <button id="stopButton">Stop Playing</button>
-    <button id="clearNotes">Clear Notes</button>
-    </div>
-    
-    <section>
-        <div id="what-isplaying">
-        </div>
-        <div id="hertz-to-note" class="show">
-            <p>Use this field to convert a frequency value to a musical note</p>
-        </div>
-        
-        <div class="controls">
-            <input class="show" type="text" id="userhertz" placeholder="Enter Frequency">
-        <button id="submithertz">Submit</button>
-            <button id="play-entered">Play Note</button>
-            <button id="addnew">Reset Conversion</button>
-        <canvas id="sineCanvas" width="400" height="100" style="border:1px solid #000000;"></canvas>
-        </div>
-    </section>
+</header>
+    <main>
+        <section class="note-inputs">
+            <h1>Sine Wave Player</h1>
+            <div class="note-input" id="note1">
+                <label for="noteInput1">Note 1:</label>
+                <input type="text" id="noteInput1" placeholder="Enter Note (e.g., C3)">
+                <input type="range" id="volume1" min="0" max="1" step="0.01" value="0.5">
+            </div>
+            <div class="note-input" id="note2">
+                <label for="noteInput2">Note 2:</label>
+                <input type="text" id="noteInput2" placeholder="Enter Note">
+                <input type="range" id="volume2" min="0" max="1" step="0.01" value="0.5">
+            </div>
+            <div class="note-input" id="note3">
+                <label for="noteInput3">Note 3:</label>
+                <input type="text" id="noteInput3" placeholder="Enter Note">
+                <input type="range" id="volume3" min="0" max="1" step="0.01" value="0.5">
+            </div>
+            <div class="note-input" id="note4">
+                <label for="noteInput4">Note 4:</label>
+                <input type="text" id="noteInput4" placeholder="Enter Note">
+                <input type="range" id="volume4" min="0" max="1" step="0.01" value="0.5">
+            </div>
+            <div class="intonationSelect">
+                <label for="intonationSystem"><strong>Select Intonation System:</strong></label>
+                <select id="intonationSystem">
+                    <option value="equal">Equal Temperament</option>
+                    <option value="just">Adaptive Just Intonation</option>
+                </select>
+            </div>
+        </section>
+        <section class="controls">
+            <button id="playAllButton">Play Notes</button>
+            <button id="stopButton">Stop Playing</button>
+            <button id="clearNotes">Clear Notes</button>
+        </section>
+        <section class="sine-controls">
+            <div id="hertz-to-note">
+                <p>Use this field to convert a frequency value to a musical note <div id="what-isplaying"></div></p>
+                
+                <input type="text" id="userhertz" placeholder="Enter Frequency">
+            </div>
+            </section>
+           <div id="canvasID">
+            <canvas id="sineCanvas"></canvas>
+            </div>
+            <section class="controls">
+                <button id="submithertz">Submit</button>
+                <button id="play-entered">Play Note</button>
+                <button id="addnew">Reset</button>
+            </section>
+            
+    </main>
     <footer>
         <p>&#169;2024 Eric Eakes</p>
     </footer>
