@@ -44,14 +44,16 @@
             </div>
         </section>
         <section class="controls">
-            <button id="playAllButton">Play Notes</button>
-            <button id="stopButton">Stop Playing</button>
-            <button id="clearNotes">Clear Notes</button>
+            <button id="playAllButton" type="button">Play Notes</button>
+            <button id="stopButton" type="button">Stop Playing</button>
+            <button id="clearNotes" type="button">Clear Notes</button>
         </section>
         <section class="sine-controls">
             <div id="hertz-to-note">
-                <p>Use this field to convert a frequency value to a musical note <div id="what-isplaying"></div></p>
-                
+                <div id="what-isplaying"></div>
+            </div>
+             <div id="hertz-container">
+                <p>Use this field to convert a frequency value to a musical note</p>
                 <input type="text" id="userhertz" placeholder="Enter Frequency">
             </div>
             </section>
@@ -59,9 +61,9 @@
             <canvas id="sineCanvas"></canvas>
             </div>
             <section class="controls">
-                <button id="submithertz">Submit</button>
-                <button id="play-entered">Play Note</button>
-                <button id="addnew">Reset</button>
+                <button id="submithertz" type="button">Submit</button>
+                <button id="play-entered" type="button">Play Note</button>
+                <button id="addnew" type="button">Reset</button>
             </section>
             
     </main>

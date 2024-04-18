@@ -2,18 +2,18 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', Arial, sans-serif;
-    background-color: #f9f9f9; /* YouTube's background color */
-    color: #333; /* Main text color */
+    background-color: #f9f9f9; 
+    color: #333; 
     height: 100%;
     overflow-x: hidden;
 }
 
 header {
-    background-color: #202020; /* Dark background for the header */
+    background-color: #202020;
     color: white;
     width: 100%;
     padding: 10px 20px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -89,6 +89,9 @@ section.sine-controls {
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     margin-top: 10px;
 }
+.note-text {
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+}
 input[type="text"], select {
     width: 100%;
     padding: 8px;
@@ -103,7 +106,7 @@ input[type="range"] {
 }
 
 button {
-    background-color: #cc0000; /* Red button backgrounds */
+    background-color: #cc0000;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -115,7 +118,7 @@ button {
 }
 
 button:hover {
-    background-color: #e60000; /* Slightly lighter red on hover */
+    background-color: #e60000; 
 }
 
 footer {
@@ -143,7 +146,7 @@ canvas {
     }
 
     .input-group {
-        flex-basis: 30%; /* Adjust based on content */
+        flex-basis: 30%; 
     }
 }
 
@@ -155,46 +158,243 @@ canvas {
 
 @media (min-width: 375px) {
     html {
-        width: 100%;  /* Full width to ensure it covers the viewport */
-        padding: 0;   /* Remove padding to use space efficiently */
+        width: 100%;  
+        padding: 0;  
     }
     body {
-        width: 100vw; /* Set width relative to the viewport width */
-        margin: 0 auto; /* Center the body if needed */
-        padding: 0;  /* Remove padding to maximize usable space */
-        max-width: 100%; /* Ensure body doesn't exceed the width of the html */
+        width: 100vw; 
+        margin: 0 auto; 
+        padding: 0;  
+        max-width: 100%; 
     }
     main {
-        margin: 0; /* Remove margin to align with the full width layout */
-        padding: 10px 10px 40px 10px; /* Add padding to avoid content touching the screen edges */
+        margin: 0; 
+        padding: 10px 10px 40px 10px; 
     }
     .controls {
         display: flex;
-        flex-direction: row; /* Align items in a row for better horizontal use of space */
-        justify-content: space-evenly; /* Evenly space the flex items */
-        align-items: center; /* Align items vertically */
+        flex-direction: row; 
+        justify-content: space-evenly; 
+        align-items: center;
         padding-left: 2px;
         padding-right: 2px;
     }
     .sine-controls {
         display: flex;
-        flex-direction: column; /* Align items in a row for better horizontal use of space */
-        justify-content: space-evenly; /* Evenly space the flex items */
-        align-items: center; /* Align items vertically */
+        flex-direction: column; 
+        justify-content: space-evenly; 
+        align-items: center; 
     }
 #sineCanvas {
     display: flex;
-    flex-direction: column; /* Align items in a row for better horizontal use of space */
-    justify-content: space-evenly; /* Evenly space the flex items */
-    align-items: center; /* Align items vertically */
+    flex-direction: column;
+    justify-content: space-evenly; 
+    align-items: center;
 }
     .input-group {
-        flex-basis: 100%; /* Make input group take full width of its container */
-        margin-bottom: 10px; /* Add some margin below each input group for separation */
+        flex-basis: 100%; 
+        margin-bottom: 10px; 
     }
     footer {
         bottom: 0px;
         margin-top: 5px;
+        padding: 0px;
+    }
+}
+
+@media (min-width: 280px) {
+    html {
+        width: 100%;  
+        padding: 0;   
+    }
+    body {
+        width: 100vw; 
+        margin: 0 auto;
+        padding: 0;  
+        max-width: 100%; 
+    }
+    main {
+        margin: 0; 
+        padding: 5px 8px 25px 8px;
+    }
+    .controls {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-evenly;
+        align-items: center; 
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .sine-controls {
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-evenly; 
+        align-items: center;
+    }
+#sineCanvas {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-evenly; 
+    align-items: center; 
+}
+    .input-group {
+        flex-basis: 100%; 
+        margin-bottom: 10px; 
+    }
+    footer {
+        bottom: 0px;
+        margin-top: 5px;
+        padding: 0px;
+    }
+}
+@media (max-width: 1024px) {
+    html {
+        width: 100%; 
+        padding: 0;   
+    }
+    body {
+        width: 100vw; 
+        margin: 0 auto; 
+        padding: 0; 
+        max-width: 100%; 
+        font-size: 30px;
+    }
+    main {
+        margin: 0; 
+        padding: 0px 10px 15px 10px; 
+    }
+    .controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly; 
+        align-items: center;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    input[type="text"], select {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: 20px;
+    }
+    .sine-controls {
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-evenly; 
+        align-items: center; 
+    }
+#sineCanvas {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-evenly; 
+    align-items: center; 
+}
+    .input-group {
+        flex-basis: 100%; 
+        margin-bottom: 15px; 
+    }
+    footer {
+        bottom: 0px;
+        margin-top: 1px;
+        padding: 0px;
+    }
+}
+@media (max-width: 820px) {
+    html {
+        width: 100%;  
+        padding: 0;   
+    }
+    body {
+        width: 100vw;
+        margin: 0 auto; 
+        padding: 0; 
+        max-width: 100%; 
+        font-size: 25px;
+    }
+    main {
+        margin: 0; 
+        padding: 0px 10px 10px 10px;
+    }
+    .controls {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-evenly; 
+        align-items: center; 
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .sine-controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+#sineCanvas {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-evenly; 
+    align-items: center;
+    height:100px;
+}
+    .input-group {
+        flex-basis: 90%; 
+        margin-bottom: 10px; 
+    }
+    footer {
+        bottom: 0px;
+        margin-top: 10px;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        width: 100%;  
+        padding: 0;   
+    }
+    body {
+        width: 100vw;
+        margin: 0 auto; 
+        padding: 0;  
+        max-width: 100%; 
+        font-size: 20px;
+    }
+    main {
+        margin: 0; 
+        padding: 0px 10px 10px 10px; 
+    }
+    .controls {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-evenly;
+        align-items: center; 
+        padding-left: 2px;
+        padding-right: 2px;
+        height: 20px;
+    }
+    .sine-controls {
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-evenly; 
+        align-items: center; 
+    }
+#sineCanvas {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+    align-items: center; 
+    height:80px;
+}
+    .input-group {
+        flex-basis: 90%; 
+        margin-bottom: 10px;
+    }
+    footer {
+        bottom: 0px;
+        margin-top: 10px;
         padding: 0px;
     }
 }
